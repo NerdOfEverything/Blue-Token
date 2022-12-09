@@ -24,10 +24,10 @@ select {
 }
 
 :root {
-  --black: #1c1e21;
-  --white: #ffffff;
-  --tw-color1: #a855f7;
-  --tw-color1-hover: #9333ea;
+  --black: white;
+  --white: black;
+  --tw-color1: #0083fd;
+  --tw-color1-hover: #7fe7ff;
 }
 
 body {

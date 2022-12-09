@@ -21,8 +21,8 @@
   height: 3rem;
   min-width: 3rem;
   font-size: 1rem;
-  background: #e5e5ea;
-  background-image: linear-gradient(to left, #cc25b3 0%, #418dff 101.52%);
+  background: white ;
+  background-image: linear-gradient(to left, #0083fd 0%, #418dff 101.52%);
   color: #fff;
   width: 180px;
   text-align: center;
@@ -35,7 +35,7 @@
 }
 
 .pink {
-  color: #cc25b3;
+  color: #0083fd;
 }
 
 .title {
@@ -67,7 +67,7 @@
 
 .divider {
   width: 50%;
-  border-color: grey;
+  border-color: white;
   opacity: 0.25;
   margin-bottom: 2rem;
 }
@@ -102,7 +102,7 @@
   background-color: transparent;
   border: 1px solid grey;
   border-radius: 8px;
-  color: #fff;
+  color: Black;
   height: 48px;
   padding: 0 16px;
   font-size: 1rem;
