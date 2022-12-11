@@ -39,7 +39,7 @@ const Home = () => {
     try {
       return BigNumber.from(activeClaimCondition.data?.availableSupply || 0);
     } catch {
-      return BigNumber.from(1_000_000_000);
+      return BigNumber.from(10_000_000);
     }
   }, [activeClaimCondition.data?.availableSupply]);
 
@@ -51,7 +51,7 @@ const Home = () => {
     const n = totalAvailableSupply.add(
       BigNumber.from(claimedSupply.data?.value || 0)
     );
-    if (n.gte(1_000_000_000)) {
+    if (n.gte(10_000_000)) {
       return "";
     }
     return n.toString();
@@ -79,7 +79,7 @@ const Home = () => {
         activeClaimCondition.data?.maxClaimableSupply || 0
       );
     } catch (e) {
-      bnMaxClaimable = BigNumber.from(1_000_000_000);
+      bnMaxClaimable = BigNumber.from(10_000_000);
     }
 
     let perTransactionClaimable;
@@ -88,7 +88,7 @@ const Home = () => {
         activeClaimCondition.data?.maxClaimablePerWallet || 0
       );
     } catch (e) {
-      perTransactionClaimable = BigNumber.from(1_000_000_000);
+      perTransactionClaimable = BigNumber.from(10_000_000);
     }
 
     if (perTransactionClaimable.lte(bnMaxClaimable)) {
@@ -100,7 +100,7 @@ const Home = () => {
     if (snapshotClaimable) {
       if (snapshotClaimable === "0") {
         // allowed unlimited for the snapshot
-        bnMaxClaimable = BigNumber.from(1_000_000_000);
+        bnMaxClaimable = BigNumber.from(10_000_000);
       } else {
         try {
           bnMaxClaimable = BigNumber.from(snapshotClaimable);
@@ -117,8 +117,8 @@ const Home = () => {
       max = bnMaxClaimable;
     }
 
-    if (max.gte(1_000_000_000)) {
-      return 1_000_000_000;
+    if (max.gte(10_000_000)) {
+      return 10_000_000;
     }
     return max.toNumber();
   }, [
@@ -255,13 +255,13 @@ const Home = () => {
               setQuantity(1);
             } else {
               setQuantity(value);
-            }
+            } 
           }}
           value={quantity}
           className={`${styles.textInput} ${styles.noGapBottom}`}
         />
         <Web3Button
-          accentColor="#5204BF"
+          accentColor="#0083fd"
           colorMode="dark"
           contractAddress={tokenAddress}
           action={(contract) => contract.erc20.claim(quantity)}
