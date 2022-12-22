@@ -1,107 +1,70 @@
-# Token Drop Example
+# Getting Started with Create React App
 
-## Introduction
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In this guide, we will utilize the [**Token Drop**](https://portal.thirdweb.com/contracts/token-drop) contract to release ERC-20 tokens!
+## Available Scripts
 
-We also utilize the token drop's [claim phases](https://portal.thirdweb.com/pre-built-contracts/token-drop#setting-claim-phases) feature, to release the tokens for a price, and only allow a certain amount to be claimed per wallet.
+In the project directory, you can run:
 
-**Check out the Demo here**: https://token-drop.thirdweb-example.com/
+### `npm start`
 
-## Tools:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-- [**thirdweb Token Drop**](https://portal.thirdweb.com/contracts/token-drop): thirdweb's Token Drop contract is a way of releasing your ERC20 tokens!
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-- [**thirdweb React SDK**](https://docs.thirdweb.com/react): To connect to our NFT Collection Smart contract via React hooks such as [useTokenDrop](https://docs.thirdweb.com/react/react.usetokendrop), connect user's wallets, and other awesome hooks like [useActiveClaimCondition](https://docs.thirdweb.com/react/react.useactiveclaimcondition) and [useClaimIneligibilityReasons](https://docs.thirdweb.com/react/react.useclaimineligibilityreasons).
+### `npm test`
 
-- [**thirdweb TypeScript SDK**](https://docs.thirdweb.com/typescript): To claim/mint tokens from the token drop with [.claim](https://portal.thirdweb.com/pre-built-contracts/token-drop#claiming-tokens) , view token balance with [.balanceOf](https://portal.thirdweb.com/pre-built-contracts/token-drop#token-balance), and transfer tokens with [.transfer](https://portal.thirdweb.com/pre-built-contracts/token-drop#transfer-tokens).
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Using This Repo
+### `npm run build`
 
-- Create a Token Drop contract via the thirdweb dashboard on the Mumbai test network.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- Create a project using this example by running:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```bash
-npx thirdweb create --template token-drop
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- Replace our demo token drop contract address (`0x5ec440E5965da9570CAa66402980c6D20cbe0663`) with your token drop contract address!
+### `npm run eject`
 
-# Guide
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Configuring the ThirdwebProvider
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-The thirdweb provider is a wrapper around our whole application.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-It allows us to access all of the React SDK's helpful hooks anywhere in our application.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-```jsx
-// This is the chainId your dApp will work on.
-const activeChainId = ChainId.Mumbai;
+## Learn More
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <ThirdwebProvider desiredChainId={activeChainId}>
-      <Component {...pageProps} />
-    </ThirdwebProvider>
-  );
-}
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Connecting User's Wallets
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-We use the [useMetamask](https://portal.thirdweb.com/react/react.usemetamask) hook to connect with user's wallets.
+### Code Splitting
 
-```jsx
-const connectWithMetamask = useMetamask();
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-// ...
-<button onClick={connectWithMetamask}>Connect with Metamask</button>;
-```
+### Analyzing the Bundle Size
 
-## Getting the token drop contract
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-We use the [useContract](https://docs.thirdweb.com/react/react.useContract) hook to get the token drop contract:
+### Making a Progressive Web App
 
-```jsx
-const { contract: tokenDropContract } = useContract(
-  "0x5ec440E5965da9570CAa66402980c6D20cbe0663",
-  "token-drop"
-);
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-## Claiming Tokens
+### Advanced Configuration
 
-We use the `claim` function and pass in the desired amount of tokens to claim inside a `Web3Button` component:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-We store a value the user types into an input field in state:
+### Deployment
 
-```jsx
-const [amountToClaim, setAmountToClaim] = useState("");
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-// ...
+### `npm run build` fails to minify
 
-<div className={styles.claimGrid}>
-  <input
-    type="text"
-    placeholder="Enter amount to claim"
-    onChange={(e) => setAmountToClaim(e.target.value)}
-    className={`${styles.textInput} ${styles.noGapBottom}`}
-  />
-  <Web3Button
-    accentColor="#5204BF"
-    colorMode="dark"
-    contractAddress="0x5ec440E5965da9570CAa66402980c6D20cbe0663"
-    action={(contract) => contract.erc20.claim(amountToClaim)}
-    onSuccess={() => alert("Claimed!")}
-    onError={(err) => alert(err)}
-  >
-    Claim Tokens
-  </Web3Button>
-</div>;
-```
-
-## Join our Discord!
-
-For any questions, suggestions, join our discord at [https://discord.gg/cd thirdweb](https://discord.gg/thirdweb).
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
