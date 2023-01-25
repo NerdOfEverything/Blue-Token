@@ -19,7 +19,7 @@ const Home = () => {
   const tokenAddress = "0xf8BD247E66f7c22C124f734DD245505c3fAB4508";
   const { contract } = useContract(tokenAddress, "token-drop");
   const address = useAddress();
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1000);
   const { data: contractMetadata } = useContractMetadata(contract);
 
   const claimConditions = useClaimConditions(contract);
@@ -62,7 +62,7 @@ const Home = () => {
       activeClaimCondition.data?.currencyMetadata.value || 0
     );
     return `${utils.formatUnits(
-      bnPrice.mul(quantity).toString(),
+      bnPrice.mul(quantity || 0).toString(),
       activeClaimCondition.data?.currencyMetadata.decimals || 18
     )} ${activeClaimCondition.data?.currencyMetadata.symbol}`;
   }, [
@@ -232,7 +232,11 @@ const Home = () => {
             />
           )}
 
-          <h2 className={styles.title}>Claim Tokens</h2>
+          <h2 className={styles.title}>Buy BST DURING OUR PRE-SALE</h2>
+          <h1 className={styles.title}>112% Bonus</h1>
+          <h3 className={styles.title}>$0.085 Per Token - Pre-Sale Price</h3>
+          <h3 className={styles.title}>$0.18 Per Token - IDO Price (March 2023)</h3>
+          <br/>
           <p className={styles.explain}>
             Claim ERC20 tokens from{" "}
             <span className={styles.pink}>{contractMetadata?.name}</span>
@@ -241,18 +245,18 @@ const Home = () => {
       )}
 
       <hr className={styles.divider} />
-
       <div className={styles.claimGrid}>
         <input
           type="number"
+          step="1000"
           placeholder="Enter amount to claim"
           onChange={(e) => {
             const value = parseInt(e.target.value);
             console.log(maxClaimable);
             if (value > maxClaimable) {
               setQuantity(maxClaimable);
-            } else if (value < 1) {
-              setQuantity(1);
+            } else if (value < 1000) {
+              setQuantity(0);
             } else {
               setQuantity(value);
             } 

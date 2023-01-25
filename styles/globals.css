@@ -1,44 +1,183 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Set core body defaults */
 body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  padding-bottom: 250px;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-:root {
-  --black: white;
-  --white: black;
-  --tw-color1: #0083fd;
-  --tw-color1-hover: #7fe7ff;
-}
-
-body {
-  background: var(--black);
-  font-family: "Inter", sans-serif;
-  color: var(--white);
-  display: flex;
   margin: 0;
-  text-align: center;
+  padding: 0;
+
+  font-family: "Comfortaa";
 }
 
-h2 {
+h1, p {
+  margin: 0;
+}
+
+.nft-flex {
+  background-image: linear-gradient(90deg, #0083fd 0%, #7fe7ff 100%);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 50px;
+  box-sizing: border-box;
+
+}
+
+.content-nft {
+  width: 45%;
+}
+
+.content-card {
+  width: 30%;
+  background-color: #0482f8;
+  padding: 40px 50px;
+  border-radius: 30px;
+}
+
+.nft-heading {
+  color: #ffffff;
+  /* font-weight: 700; */
+  /* font-size: 75px; */
+  font-weight: 400;
+  margin-bottom: 28px !important;
   font-size: 2rem;
+
+}
+
+.content-nft p {
+
+  color: white;
+  font-size: 18px;
+  margin: 23px 0;
+  font-weight: 300;
+}
+
+.content-card {
+  text-align: center;
+  color: white;
+}
+
+.bonus-tile {
+  margin: 20px 0;
+}
+
+.pre-sale {
+  margin: 5px 0 40px 0;
+}
+
+.large-num {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.token-input {
+  margin: 60px 0 25px 0;
+  position: relative;
+}
+
+.token-input input {
+  width: 85%;
+  background-color: #ffffff;
+  border: 1px solid #707070;
+  padding: 16px 80px 16px 10px;
+  margin: 9px 0 20px 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.float {
+  position: absolute;
+  color: #0084fd;
+  right: 12%;
+  top: 0;
+  /* margin-right: 50px;
+  margin-top: 42px; */
+  margin-top: 42px;
+}
+
+.connect-btn {
+  border-radius: 69px;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #707070;
+  width: 85%;
+  box-sizing: border-box;
+  color: black;
+  font-size: 1.4rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Responsivness Start */
+@media (max-width:1000px) {
+  .nft-flex {
+      padding: 0 30px;
+  }
+
+  .content-card {
+      width: 35%;
+  }
+}
+
+@media (max-width:768px) {
+  .nft-flex {
+      flex-direction: column;
+  }
+
+  .content-nft {
+      width: 100%;
+  }
+
+  .nft-flex {
+      padding: 50px 20px;
+      height: auto;
+  }
+
+  .content-card {
+      width: 70%;
+      margin-top: 40px;
+  }
+
+  .desk {
+      display: none;
+  }
+
+  .nft-heading {
+      line-height: 40px;
+  }
+
+  .content-nft p {
+      font-size: 16px;
+  }
+}
+
+@media (max-width:550px) {
+  .nft-heading {
+      font-size: 1.6rem;
+  }
+
+  .content-card {
+      width: 87%;
+  }
+
+  .token-input input, .connect-btn {
+      width: 100%;
+  }
+
+  .float {
+      right: 6%;
+  }
+
+  .connect-btn {
+      font-size: 1.2rem;
+  }
+
+  .content-card {
+      padding: 35px 20px;
+  }
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
 }
