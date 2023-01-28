@@ -12,6 +12,7 @@ import {
 import { BigNumber, utils } from "ethers";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+
 import styles from "../styles/Home.module.css";
 import { parseIneligibility } from "../utils/parseIneligibility";
 
@@ -201,6 +202,8 @@ const Home = () => {
     quantity,
   ]);
 
+  const [isChecked, setIsChecked] = useState(true);
+
   return (
     <div className={styles.container}>
       {(claimConditions.data &&
@@ -232,15 +235,24 @@ const Home = () => {
             />
           )}
 
-          <h2 className={styles.title}>Buy BST DURING OUR PRE-SALE</h2>
-          <h1 className={styles.title}>112% Bonus</h1>
-          <h3 className={styles.title}>$0.085 Per Token - Pre-Sale Price</h3>
-          <h3 className={styles.title}>$0.18 Per Token - IDO Price (March 2023)</h3>
+          <h2 className={styles.title}>BUY BST DURING OUR PRE-SALE</h2>
+          <h1 className={styles.title}>112% BONUS</h1>
+          <h3 className={styles.title}>$0.085 Per Token - PRE-SALE PRICE</h3>
+          <h3 className={styles.title}>$0.18 Per Token - IDO PRICE (MARCH 2023)</h3>
           <br/>
           <p className={styles.explain}>
             Claim ERC20 tokens from{" "}
             <span className={styles.pink}>{contractMetadata?.name}</span>
           </p>
+          <div>
+          <br/>
+            <input
+              type="checkbox"
+              onChange={(event) => setIsChecked(event.currentTarget.checked)}
+              checked={isChecked}
+            />
+            <span>I Agree with the Terms of Token Sale in the <br/>Blue Social Utility <a href="https://blue.social/pages/TokenPurchaseAgreement">Token Purchase Agreement.</a></span>
+          </div>
         </>
       )}
 
@@ -250,6 +262,7 @@ const Home = () => {
           type="number"
           step="1000"
           placeholder="Enter amount to claim"
+          onClick={() => setIsChecked(!isChecked)}
           onChange={(e) => {
             const value = parseInt(e.target.value);
             console.log(maxClaimable);
